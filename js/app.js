@@ -1,6 +1,10 @@
+import { validateName, validateNumber } from "./validators.js";
+
 //_________________________
 //SELECCIONAR LOS ELEMENTOS
 //_________________________
+
+
 
 const $form = document.getElementById("form-contacto");
 const $inputNombre = document.getElementById("input-nombre");
@@ -24,8 +28,15 @@ $form.addEventListener("submit", (event) => {
   const imagen = $inputImagen.value;
   const notas = $inputNotas.value;
 
-  if (!nombre || !numero || !email || !imagen) {
-    alert("no ingreso todos los campos requeridos");
+ 
+  if (!validateName($inputNombre) || !validateNumber($inputNumero)) {
+    alert('revisa los campos')
     return;
   }
 });
+
+
+// if (!nombre || !numero || !email || !imagen) {
+//     alert("no ingreso todos los campos requeridos");
+//     return;
+//   }

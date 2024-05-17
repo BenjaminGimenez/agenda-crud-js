@@ -26,3 +26,25 @@ export const validateName = (field) => {
   field.classList.add('is-valid');
   return true;
 };
+
+//===== validar numero ======
+
+export const validateNumber = (field) => {
+    //validar campos vacios, null, etc
+    if (!field || !field.value.trim()) {
+      field.classList.add('is-invalid');
+      field.classList.remove('is-valid');
+      return false;
+    }
+    
+    //validar que sean numeros y longitud hasta 8 digitos
+    const regex = /^\d{8}$/;
+    if (!regex.test(field.value)) {
+      field.classList.add('is-invalid');
+      field.classList.remove('is-valid');
+      return false;
+    }
+    field.classList.remove('is-invalid');
+    field.classList.add('is-valid');
+    return true;
+  };
