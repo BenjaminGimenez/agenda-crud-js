@@ -3,16 +3,29 @@
 //_________________________
 
 const $form = document.getElementById("form-contacto");
-const $inputNombre = document.getElementById("inputNombre");
-const $inputNumero = document.getElementById("inputNumero");
-const $inputEmail = document.getElementById("inputEmail");
-const $inputImagen = document.getElementById("inputImagen");
-const $inputNotas = document.getElementById("inputNotas");
+const $inputNombre = document.getElementById("input-nombre");
+const $inputNumero = document.getElementById("input-numero");
+const $inputEmail = document.getElementById("input-email");
+const $inputImagen = document.getElementById("input-imagen");
+const $inputNotas = document.getElementById("input-notas");
 
 //_________________________
 //EVENT LISTENER DEL SUBMIT
 //_________________________
 
-$form = document.addEventListener("submit", () => {});
+$form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-const hola = 0;
+  console.log(event);
+
+  const nombre = $inputNombre.value;
+  const numero = $inputNumero.value;
+  const email = $inputEmail.value;
+  const imagen = $inputImagen.value;
+  const notas = $inputNotas.value;
+
+  if (!nombre || !numero || !email || !imagen) {
+    alert("no ingreso todos los campos requeridos");
+    return;
+  }
+});
