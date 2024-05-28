@@ -1,10 +1,8 @@
-import { validateName, validateNumber } from "./validators.js";
+import { validateEmail, validateName, validateNumber, validateUrl } from "./validators.js";
 
 //_________________________
 //SELECCIONAR LOS ELEMENTOS
 //_________________________
-
-
 
 const $form = document.getElementById("form-contacto");
 const $inputNombre = document.getElementById("input-nombre");
@@ -22,21 +20,17 @@ $form.addEventListener("submit", (event) => {
 
   console.log(event);
 
+  ;
+
+  if (!validateName($inputNombre) || !validateNumber($inputNumero) || !validateEmail($inputEmail) || !validateUrl($inputImagen)) {
+    alert("revisa los campos");
+    return;
+  }
   const nombre = $inputNombre.value;
   const numero = $inputNumero.value;
   const email = $inputEmail.value;
   const imagen = $inputImagen.value;
-  const notas = $inputNotas.value;
-
- 
-  if (!validateName($inputNombre) || !validateNumber($inputNumero)) {
-    alert('revisa los campos')
-    return;
-  }
+  const notas = $inputNotas.value
 });
 
 
-// if (!nombre || !numero || !email || !imagen) {
-//     alert("no ingreso todos los campos requeridos");
-//     return;
-//   }
