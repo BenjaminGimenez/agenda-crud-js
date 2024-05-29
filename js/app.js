@@ -17,6 +17,28 @@ const $inputEmail = document.getElementById("input-email");
 const $inputImagen = document.getElementById("input-imagen");
 const $inputNotas = document.getElementById("input-notas");
 
+
+//_________________________
+//EVENT LISTENER DEL BLUR
+//_________________________
+
+$inputNombre.addEventListener('blur', ()=>{
+  validateName($inputNombre);
+});
+
+$inputNumero.addEventListener('blur', ()=>{
+  validateNumber($inputNumero);
+});
+
+$inputEmail.addEventListener('blur', ()=>{
+  validateEmail($inputEmail);
+});
+
+$inputImagen.addEventListener('blur', ()=>{
+  validateUrl($inputImagen);
+});
+
+
 //_________________________
 //EVENT LISTENER DEL SUBMIT
 //_________________________
@@ -24,7 +46,7 @@ const $inputNotas = document.getElementById("input-notas");
 $form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  //aca validamos los campos
+  // A- aca validamos los campos
 
   if (
     !validateName($inputNombre) ||
@@ -36,7 +58,7 @@ $form.addEventListener("submit", (event) => {
     return;
   }
 
-  //todo ok, conseguir los datos extraidos del formulario
+  //B- todo ok, conseguir los datos extraidos del formulario
 
   const nombre = $inputNombre.value;
   const numero = $inputNumero.value;
@@ -45,4 +67,14 @@ $form.addEventListener("submit", (event) => {
   const notas = $inputNotas.value;
 
   agregarContacto(nombre, numero, email, imagen, notas);
+
+  //C- resetear formulario
+  $form.reset(); //limpia todos los campos del form
+  $inputNombre.classList.remove('is-valid', 'is-invalid');
+  $inputNumero.classList.remove('is-valid', 'is-invalid');
+  $inputEmail.classList.remove('is-valid', 'is-invalid');
+  $inputImagen.classList.remove('is-valid', 'is-invalid');
+
+  //D- notificar al usuario
+  alert(`contacto creado bajo el nombre de ${nombre}`)
 });
