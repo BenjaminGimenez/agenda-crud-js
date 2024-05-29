@@ -77,6 +77,7 @@ export const validateNumber = (field) => {
 
   //para validar Url
   export const validateUrl = (field) => {
+    
     //validar campos vacios, null, etc
     if (!field || !field.value.trim()) {
       field.classList.add('is-invalid');
@@ -89,7 +90,8 @@ export const validateNumber = (field) => {
       field.classList.remove('is-valid');
       return false;
     }
-    //validar formato mail
+
+    //validar formato url
     const regex = /^(https?:\/\/)?([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,}(:\d{1,5})?(\/[^\s]*)?$/;
     if (!regex.test(field.value)) {
       field.classList.add('is-invalid');
