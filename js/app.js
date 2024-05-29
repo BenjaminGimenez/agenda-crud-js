@@ -18,6 +18,7 @@ const $inputNotas = document.getElementById("input-notas");
 $form.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  //aca validamos los campos
   console.log(event);
 
   ;
@@ -26,6 +27,9 @@ $form.addEventListener("submit", (event) => {
     alert("revisa los campos");
     return;
   }
+
+  //todo ok, conseguir los datos extraidos del formulario
+
   const nombre = $inputNombre.value;
   const numero = $inputNumero.value;
   const email = $inputEmail.value;
